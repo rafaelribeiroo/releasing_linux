@@ -1,0 +1,29 @@
+Difference between <LINUX>, <UNIX> e GNU
+
+    → Unix é um sistema operacional, foi designado como um sistema operacional
+    de multi-usuários;
+    → GNU é e foi uma tentativa de criar um sistema operacional totalmente
+    gratuito com ferramentas totalmente gratuitas; em ferramentas eles
+    conseguiram além de todas as expectativas mas o kernel (núcleo do
+    sistema) não conseguiram;
+    → Linux é um clone gratuito do kernel UNIX, com as ferramentas (softwares)
+    gratuitas do GNU.
+
+Como se pronuncia linux corretamente?
+
+    O certo é falar GNU/Linux, porque linux é só o kernel (o topo da cebola,
+    partindo do pressuposto que um SO é como uma cebola, com várias camadas)
+
+Difference between <echo 'Something' > file.txt> e <dois: ">>">
+
+    > Apaga tudo que estiver no arquivo e grava somente o parâmetro passado
+    entre echo;
+    >> Escreve o que foi passado no final do arquivo e mantém os dados
+    anteriores.
+
+Difference between <software livre> e <open-source>
+
+    Open-Source → Código fonte aberto para consulta, qualquer um pode colaborar
+    e enviar PR com melhorias
+    Software Livre → Aqui já tem um dono, às vezes pode ser acessado por
+    terceiros mas somente quem promove alterações é o dono.

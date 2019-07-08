@@ -1,4 +1,4 @@
-Difference between <LINUX>, <UNIX> e GNU
+Difference between <LINUX>, <UNIX> e <GNU>
 
     → Unix é um sistema operacional, foi designado como um sistema operacional
     de multi-usuários;
@@ -9,7 +9,7 @@ Difference between <LINUX>, <UNIX> e GNU
     → Linux é um clone gratuito do kernel UNIX, com as ferramentas (softwares)
     gratuitas do GNU.
 
-Como se pronuncia linux corretamente?
+Como se referir ao linux corretamente?
 
     O certo é falar GNU/Linux, porque linux é só o kernel (o topo da cebola,
     partindo do pressuposto que um SO é como uma cebola, com várias camadas)
@@ -27,3 +27,17 @@ Difference between <software livre> e <open-source>
     e enviar PR com melhorias
     Software Livre → Aqui já tem um dono, às vezes pode ser acessado por
     terceiros mas somente quem promove alterações é o dono.
+
+O que é a memória swap?
+
+    O SWAP é quando você tá com a memória cheia (suponha que você abriu
+    múltiplos programas), e você tá exigindo mais memória... Ele vai verificar
+    qual programa você não tá usando no momento, tirar um pedaço pra liberar
+    espaço, jogar pro disco exatamente na memória SWAP e colocar o programa
+    que você precisap; e assim sucessivamente.
+
+O que é o grub?
+
+    O Grub é o programa que fica no boot, assim que você liga a máquina, se
+    tiver outro SO, ele te pergunta qual você deseja inicializar.
+

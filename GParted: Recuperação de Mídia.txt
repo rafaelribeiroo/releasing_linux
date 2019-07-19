@@ -8,7 +8,7 @@ sudo apt install -y gparted
 Cancele
 
 3. Acesse a tela de configuração da sua mídia
-Geralmente o /dev/sdb  # Verificar arquivo: "XX"
+Geralmente o /dev/sdb  # Verificar arquivo: "06. Arquivos..."
 
 4. Criação da tabela de partição
 Dispositivo > Criar tabela de partição

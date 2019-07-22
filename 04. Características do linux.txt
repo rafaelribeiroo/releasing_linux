@@ -33,6 +33,6 @@ Tudo são arquivos, têm arquivo relacionado a dispositivos/teclado/mouse
 
 > As interfaces gráficas de usuários não permitem que você as acessem em root;
 
-> Comandos +
+> Comandos +  # Sempre em caixa baixa
 Parâmetros +  # Podemos utilizar dois padrões: "-h POSIX" ou "--help GENTOO"
-Argumentos;
+Argumentos;  # Informações passadas para o comando

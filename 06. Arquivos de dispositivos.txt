@@ -23,3 +23,7 @@ stderr: Saída de erros.
 tty0/tty1/tty2/...: Por padrão, ele tem 64 terminais.
 
 Podem ser dispositivos de blocos ou de caracteres
+
+CURIOSITY
+Em um diretório nomeado: "pts" (dentro do dev), podemos visualizar os arquivos
+que remetem aos pseudo-terminais abertos atualmente na sessão (limite é 256).

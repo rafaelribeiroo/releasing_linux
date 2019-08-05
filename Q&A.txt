@@ -24,20 +24,23 @@ e enviar PR com melhorias
 Software Livre → Aqui já tem um dono, às vezes pode ser acessado por
 terceiros mas somente quem promove alterações é o dono.
 
-O que é a memória swap?
+<Memória SWAP>?
 O SWAP é quando você tá com a memória cheia (suponha que você abriu
 múltiplos programas), e você tá exigindo mais memória... Ele vai verificar
 qual programa você não tá usando no momento, tirar um pedaço pra liberar
 espaço, jogar pro disco exatamente na memória SWAP e colocar o programa
-que você precisap; e assim sucessivamente.
+que você precisar; e assim sucessivamente.
 
-O que é o grub?
-O Grub é o programa que fica no boot, assim que você liga a máquina, se
-tiver outro SO, ele te pergunta qual você deseja inicializar.
+<GRUB>?
+É o programa que fica no boot, assim que você liga a máquina, se tiver outro
+SO, ele te pergunta qual você deseja inicializar.
 
-O que é o GNOME?
+<GNOME>?
 Um ambiente gráfico (padrão da Debian, entre outras distros)
 
-O que é o proxy?
-O proxy funciona como um intermediário da rede, você se conecta e ele
-"pega" o site pra você.
+Difference between <GREP>, <AWK> e <SED>
+grep → Busca termos específicos em um arquivo;
+Já os próximos são totalmente diferentes, são processadores de texto (não
+apenas busca termos, como remove/adiciona/modifica/etc).
+awk → Mais usado para extração de dados e relatórios;
+sed → Stream editor.

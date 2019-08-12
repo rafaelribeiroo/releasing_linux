@@ -15,6 +15,6 @@ Selecionar Níveis de backups:
     necessário).
 
 Alterando o mirror de atualizações de pacotes (local é melhor):
-http://mint-packages.c3sl.ufpr.br
-    ← Universidade Federal do Paraná;
-    ← Setar o mesmo no principal e na base.
+    ← Configurações do sistema;
+    ← Fontes de aplicativos;
+    ← Analise qual responde mais rápido e comute.

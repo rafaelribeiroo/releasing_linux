@@ -1,0 +1,52 @@
+Difference between <LINUX>, <UNIX> e <GNU>
+→ Unix é um sistema operacional, foi designado como um sistema operacional
+de multi-usuários;
+→ GNU é e foi uma tentativa de criar um sistema operacional totalmente
+gratuito com ferramentas totalmente gratuitas; em ferramentas eles
+conseguiram além de todas as expectativas mas o kernel (núcleo do
+sistema) não conseguiram;
+→ Linux é um clone gratuito do kernel UNIX, com as ferramentas (softwares)
+gratuitas do GNU.
+
+Como se referir ao linux corretamente?
+O certo é falar GNU/Linux, porque linux é só o kernel (o topo da cebola,
+partindo do pressuposto que um SO é como uma cebola, com várias camadas).
+
+Difference between <echo 'Something' > file.txt> e <dois: ">>">
+> Apaga tudo que estiver no arquivo e grava somente o parâmetro passado
+entre echo;
+>> Escreve o que foi passado no final do arquivo e mantém os dados
+anteriores.
+
+Difference between <software livre> e <open-source>
+Open-Source → Código fonte aberto para consulta, qualquer um pode colaborar
+e enviar PR com melhorias
+Software Livre → Aqui já tem um dono, às vezes pode ser acessado por
+terceiros mas somente quem promove alterações é o dono.
+
+<Memória SWAP>?
+O SWAP é quando você tá com a memória cheia (suponha que você abriu
+múltiplos programas), e você tá exigindo mais memória... Ele vai verificar
+qual programa você não tá usando no momento, tirar um pedaço pra liberar
+espaço, jogar pro disco exatamente na memória SWAP e colocar o programa
+que você precisar; e assim sucessivamente.
+
+<GRUB>?
+É o programa que fica no boot, assim que você liga a máquina, se tiver outro
+SO, ele te pergunta qual você deseja inicializar.
+
+<GNOME>?
+Um ambiente gráfico (padrão da Debian, entre outras distros)
+
+Difference between <GREP>, <AWK> e <SED>
+grep → Busca termos específicos em um arquivo;
+Já os próximos são totalmente diferentes, são processadores de texto (não
+apenas busca termos, como remove/adiciona/modifica/etc).
+awk → Mais usado para extração de dados e relatórios;
+sed → Stream editor.
+
+Ao utilizar dois shell's diferentes em uma mesmo distro, em qual <shell_name>rc
+devemos incluir as variáveis de ambiente?
+Não importa, já que o .bashrc (padrão) é importado sempre que o zsh inicia. Se
+acrescentar no bashrc ficará visível para todos, caso incremente no zsh...
+

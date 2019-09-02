@@ -1,0 +1,88 @@
+Priori: Alguns dos comandos citados não requerem privilégios administrativos,
+apenas comandos que produzem alterações.
+
+add-repository: Se o pacote desejado não estiver referenciado no  sources.list,
+não haverá como baixar, até que você referencie através desse comando.
+
+autoclean: Remove arquivos desnecessários de instalações antigas.
+
+autoremove: Remove pacotes órfãos que não são mais necessários.
+
+build: Compila e gerencia pacotes a partir de um código-fonte, apt faz tudo e
+não nos preocupamos com → ./configure   → make   → make install
+
+build-dep: Semelhante ao apt install, instala as dependências e o pacote, mas
+as dependências são necessárias na hora da execução ou da compilação? Se for
+na hora da compilação, pode usar o build-dep.
+
+changelog: Visualizar o changelog de determinado pacote.
+
+check: Verifica se existem dependências "quebradas" em determinado pacote.
+
+clean: Limpa os repositórios.
+
+contains: Lista os arquivos separadamente de cada pacote.
+
+content: Lista os arquivos referentes ao pacote no seu sistema.
+
+deb: Instalação a partir de um arquivo .deb.
+
+depends: Listar dependências do pacote.
+
+dist-upgrade: Também atualiza os pacotes, mas remove para reinstalar também se
+for o caso ("mais arriscado", pois modifica o sistema mais profundamente).
+
+download: Efetua o download do .deb referente ao pacote.
+
+edit-sources: Edição das fontes dos repositórios.
+
+dselect-upgrade: Em desuso, funciona em conjunto com o dselect para sugerir
+outros pacotes na hora da instalação de determinado pacote.
+
+full-upgrade: Basicamente, faz o mesmo que o dist-upgrade.
+
+held: Exibe uma lista dos pacotes "congelados".
+
+help: Assimila com outro comando para uma melhor compreensão.
+
+hold: Basicamente, ele vai "congelar" seu pacote na versão instalada, não sendo
+afetado pelo upgrade.
+
+install: Instala um pacote (se existir no sources.list), bem como suas
+dependências.
+
+list
+    -- upgradable: Lista os pacotes que podem ser atualizados.
+    list 'php7*': Pacotes relacionados ao PHP 7.
+
+policy: Exibe a política de determinado pacote.
+
+purge: Desinstala, além do pacote, seus arquivos de configuração.
+
+recommends: Exibe as dependências não instaladas sobre um determinado pacote.
+
+rdepends: Lista dependências reversas do pacote, bem como recomendações.
+
+reinstall: Efetua a reinstalação do pacote.
+
+remove: Desinstala o pacote.
+
+search: Possibilita a descoberta de pacotes, bem como palavras dentro das
+descrições dos mesmos.
+
+show: Exibe informações do pacote antes da instalação.
+
+showhold: Basicamente, faz o mesmo que o held.
+
+source: Baixa arquivos de origem do pacote.
+
+sources: Basicamente, faz o mesmo que o edit-sources.
+
+unhold: "Descongela".
+
+update: Atualiza a lista de pacotes sources.list (necessário após um
+add-repository).
+
+upgrade: Realiza a atualização de todos os pacotes instalados.
+
+version: Exibe a versão do programa instalada (similar ao <pacote> -V).

@@ -1,0 +1,16 @@
+Priori: Bash é o interpretador mais comum, mas nada o impede de alternar.
+
+cd  # change directory
+ls Linux/  # Não precisa apenas visualizar em seu diretório atual
+ls -a  # Arquivos ocultos
+mkdir -p Cursos/Hardware/Módulo\ 1/  # Criar pastas recursivamente
+
+ls -R  Cursos/  # Listagem recursivamente
+ls -Rla Cursos/  # Exibição mais detalhada
+
+rm -r Cursos/  # Apagar recursivamente/Forçar
+rm -i  # Pra cada arquivo ele te questiona
+rm -I  # Se houver 3+ arquivos, ele te questiona
+
+Dica: alias rm="rm -I"
+    Se quiser tornar o alias definitivo, insira-o em .bashrc e source

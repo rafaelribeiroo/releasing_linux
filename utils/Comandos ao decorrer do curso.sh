@@ -2,6 +2,10 @@
 
 # Sempre usar os comandos em lowercase
 
+ls -lha
+
+rm -i
+
 history  # !<posição_comando>
 
 xdg-open file.txt  # Abre arquivo

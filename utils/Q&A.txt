@@ -1,4 +1,4 @@
-Difference between <LINUX>, <UNIX> e <GNU>
+Qual a diferença entre <LINUX>, <UNIX> e <GNU>?
 → Unix é um sistema operacional, foi designado como um sistema operacional
 de multi-usuários;
 → GNU é e foi uma tentativa de criar um sistema operacional totalmente
@@ -38,15 +38,18 @@ SO, ele te pergunta qual você deseja inicializar.
 <GNOME>?
 Um ambiente gráfico (padrão da Debian, entre outras distros)
 
-Difference between <GREP>, <AWK> e <SED>
+Qual a diferença entre <GREP>, <AWK> e <SED>?
 grep → Busca termos específicos em um arquivo;
 Já os próximos são totalmente diferentes, são processadores de texto (não
 apenas busca termos, como remove/adiciona/modifica/etc).
 awk → Mais usado para extração de dados e relatórios;
 sed → Stream editor.
 
-Ao utilizar dois shell's diferentes em uma mesmo distro, em qual <shell_name>rc
-devemos incluir as variáveis de ambiente?
-Não importa, já que o .bashrc (padrão) é importado sempre que o zsh inicia. Se
-acrescentar no bashrc ficará visível para todos, caso incremente no zsh...
-
+Qual a diferença entre os diversos tipos de instalador de pacotes?
+AppImage: É um formato de distribuição de pacotes pensado para ser PORTÁTIL,
+permite a execução em qualquer distribuição.
+Flatpak: Formato de distribuição que permite utilizar softwares nas versões
+atuais sem adicionar um repositório instável ao sistema.
+APT: Ferramenta de instalação de pacote pela linha de comando.
+Synaptic: Ferramenta de interface gráfica, depreciada pelo software center.
+Software Center: Ferramenta de interface gráfica atual.

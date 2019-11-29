@@ -1,0 +1,3 @@
+ls /etc/*.conf  # Um conjunto de caracteres que tenham extensão .conf
+
+ls /etc/?as*  # Enquanto o * é um conjunto, o ? é apenas um

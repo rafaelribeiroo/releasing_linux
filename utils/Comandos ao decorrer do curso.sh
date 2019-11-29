@@ -1,7 +1,14 @@
 #!/bin/bash
 
-# Ao trabalhar com o bash, ele armazena os últimos 2.000 comandos informados.
-# Há formas de expandir esse limite, porém não interessa no momento, para
-# buscar esses registros usamos o:
-history
-# E para executar um, basta informar !<posição_comando>
+# Sempre usar os comandos em lowercase
+
+ls -lha
+
+rm -i
+
+history  # !<posição_comando>
+
+xdg-open file.txt  # Abre arquivo
+
+# Encontra todos os arquivos e executa a listagem
+find . -name "<parte_nome_arquivo>*" -exec ls -lrt {} \;

@@ -26,4 +26,5 @@ Podem ser dispositivos de blocos ou de caracteres
 
 CURIOSITY
 Em um diretório nomeado: "pts" (dentro do dev), podemos visualizar os arquivos
-que remetem aos pseudo-terminais abertos atualmente na sessão (limite é 256).
+que remetem aos pseudo-terminais (já que tem um interpretador de comandos
+rodando embaixo dos panos) abertos atualmente na sessão (limite é 256).

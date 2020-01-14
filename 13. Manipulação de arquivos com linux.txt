@@ -1,0 +1,28 @@
+Priori: Qualquer sistema tem uma entrada e uma saída padrão. Por entrada:
+teclado, por saída: tela. No linux, da para alterarmos a saída padrão e
+enviar pra um arquivo, por exemplo.
+
+# Definição de todas as portas de rede que o sistema usa
+cat /etc/services
+
+# Pagina seu arquivo: seta up/down, page up/down, home/end, /termo_a_buscar (n)
+less /etc/services
+
+# Cat ao contrário: exibe o arquivo da última à primeira linha
+tac
+
+# Copia arquivos, informando da onde vêm, pra onde vai
+cp *.txt ~/Downloads
+
+# Make directory, aceita vários argumentos
+mkdir Python Bash
+
+# Usando regex no bash
+cp /etc/*.conf temporario/
+
+# Apelidando comandos
+alias rm='/bin/rm -I'
+alias sudo='please'
+
+# Removendo tudo que está alocado na pasta Temp
+rm Temp/*

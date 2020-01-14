@@ -1,3 +1,25 @@
-ls /etc/*.conf  # Um conjunto de caracteres que tenham extensão .conf
+Abaixo, utilizaremos alguns metacaracteres para localizar strings.
 
-ls /etc/?as*  # Enquanto o * é um conjunto, o ? é apenas um
+Um conjunto de caracteres que tenham extensão .conf
+ls /etc/*.conf
+
+Enquanto o * é um conjunto, o ? é apenas um
+ls /etc/?as*
+
+Entre colchetes, é uma faixa de caracteres (o segundo caractere pode variar do A até o I)
+ls /etc/f[a-i]*
+
+Faixa do A ao C, ou E
+ls /etc/f[a-c,e]*
+
+# Tem que ser exatamente am ou ul, é um padrão!
+ls /etc/?{am,ul}*
+
+Observação: Traço é intervalo, vírgula é conjunto/padrão.
+
+# Ao tentar fazer a mesma coisa com os colchetes, ele vai buscar tudo do A ao M 
+(- opcional)
+ls /etc/?[am,ul]*
+
+# Todos os arquivos com tal extensão
+ls /etc/*.{conf,db}

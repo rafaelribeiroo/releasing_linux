@@ -1,0 +1,27 @@
+ntfs nao funciona no mac
+
+fat32 compativel com todos os so
+nao é possivel manipular arquivos maiores 4gb
+
+exfat
+compativel quase em todos os lugares
+pode lidar com arquivos maiores 4gb
+
+ntfs
+compativel com windows
+nao é compativel com o mac e maioria dos dispositivos de hardware
+problemas ocasionais de compatibilidade com o linux (o ntfs é patenteado e com engenharia reversa)
+
+ext4
+moderno, estavel, rapido, jornalizado
+suporta permissoes de arquivos do linux
+nao eh compativel com windows, mac e maioria dos dispositivos de hardware
+
+ao copiar graficamente um arquivo pra outro diretorio no NEMO, se só arrastar
+ele copia, se segurar o shift, ele move.
+
+quando manda ejetar o pen drive, ele para sincroniza os dados, salva tudo e aí vai liberar
+quando a janela de progresso acaba, ele ainda não acabou de copiar.
+
+
+

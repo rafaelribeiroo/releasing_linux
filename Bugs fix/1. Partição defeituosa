@@ -1,0 +1,11 @@
+A start job is running for dev-disk-by\...\...device
+# ou
+You are in emergency mode. After logging in, type "journalctl -xb" to view system logs.
+
+Para fixar:
+
+1. Verica e detecta setores defeituosos no HD (pode ser poeira ou outra coisa)
+badblocks -v /dev/"sda"
+
+2. Corrige
+fsck /dev/"sda" -y

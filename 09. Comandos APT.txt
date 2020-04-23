@@ -19,7 +19,7 @@ changelog: Visualizar o changelog de determinado pacote.
 
 check: Verifica se existem dependências "quebradas" em determinado pacote.
 
-clean: Limpa os repositórios.
+clean: Limpa os repositórios (clear /var/cache/apt/archives).
 
 contains: Lista os arquivos separadamente de cada pacote.
 

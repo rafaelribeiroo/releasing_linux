@@ -53,3 +53,8 @@ acrescentar no bashrc ficará visível para todos, caso incremente no zsh...
 Diferença entre <aplicação> e <pacote>?
 Uma aplicação é uma coleção de programas executáveis, enquanto um pacote é
 apenas uma coleção (não executável).
+
+<SWAP>?
+A SWAP salva o sistema de crashar, já que se estiver com pouca RAM, ele faz uma
+"área de troca" entre programas que estão abertos e não estão sendo utilizados
+e programas que estão em utilização, distribuindo adequadamente.

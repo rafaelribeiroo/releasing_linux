@@ -22,7 +22,7 @@ stdout: Saída padrão (tela).
 stderr: Saída de erros.
 tty0/tty1/tty2/...: Por padrão, ele tem 64 terminais.
 
-Podem ser dispositivos de blocos ou de caracteres
+Podem ser dispositivos de blocos ou de caracteres.
 
 CURIOSITY
 Em um diretório nomeado: "pts" (dentro do dev), podemos visualizar os arquivos

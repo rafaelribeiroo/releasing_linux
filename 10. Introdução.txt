@@ -1,0 +1,45 @@
+A princípio, veremos alguns comandos primordiais para se navegar e manipular
+conteúdo no pseudo-terminal.
+
+1. Exibe apenas nome dos diretórios/arquivos.
+ls
+
+2. Exibe nome dos diretórios/arquivos sem ignorar ocultos (prefixo .)
+ls -a
+
+3. Obtém mais informações: "permissões, usuário proprietário, grupo
+proprietário, tamanho kB e data de alteração"
+ls -l  # --long
+
+4. Obtém as mesmas info que acima porém converte de kB para mB/tB
+ls -h  # --human-readable
+
+5. Utilizando todos em conjunto
+ls -lha
+
+6. Não necessitamos estar na pasta para dar o comando
+ls /bin
+
+7. Pega o conteúdo de tal arquivo e joga na tela de uma só vez
+cat /proc/cpuinfo
+
+8. Pega o conteúdo localizado em cpuinfo e formata para deixar mais amigável
+lscpu
+
+9. Listar o caminho absoluto (desde a raíz até o presente diretório)
+pwd
+
+10. Cria diretório
+mkdir Linux
+
+11. Cria arquivo
+touch arquivo.txt
+
+12. Acessando diretórios
+cd ~   # fique em casa!
+cd ..  # retroceda
+cd -   # retrocede ao último diretório em que esteve
+
+CURIOSITY
+→ Todo comando têm a possibilidade de aceitar parâmetros.
+→ Sempre utilize nome de comandos em minúsculo.

@@ -19,6 +19,7 @@ comandos SHELL, vai ser a principal ligação entre o usuário, programas e kern
     ← bash;
     ← ash;
     ← cshell;
+
 > Pra que vários?
 Cada um resolveu fazer da sua maneira, agregando características que fossem
 mais interessantes.
@@ -33,6 +34,6 @@ Tudo são arquivos, têm arquivo relacionado a dispositivos/teclado/mouse
 
 > As interfaces gráficas de usuários não permitem que você as acessem em root;
 
-> Comandos +  # Sempre em caixa baixa
-Parâmetros +  # Podemos utilizar dois padrões: "-h POSIX" ou "--help GENTOO"
-Argumentos;  # Informações passadas para o comando
+> comandos +  # Sempre em caixa baixa
+parâmetros +  # Podemos utilizar dois padrões: "-h POSIX" ou "--help GNU"
+argumentos;  # Informações passadas para o comando

@@ -1,25 +1,30 @@
-Abaixo, utilizaremos alguns metacaracteres para localizar strings.
+Priori: Os caracteres de referência global é um recurso para especificar um ou
+mais arquivo e/ou diretório (s) do sistema de uma só vez.
 
-Um conjunto de caracteres que tenham extensão .conf
+1. Listamos todos os arquivos que tem como semelhança a extensão .conf
 ls /etc/*.conf
+    ← O asterisco casa com tudo
 
-Enquanto o * é um conjunto, o ? é apenas um
+2. Casa com qualquer coisa que tem refo no meio
+ls /etc/*refo*
+
+3. Começa obrigatoriamente com um caractere, sucedido por: "as", sucedido por *
 ls /etc/?as*
+    ← A interrogação casa com apenas 1 caractere
 
-Entre colchetes, é uma faixa de caracteres (o segundo caractere pode variar do A até o I)
+4. Arquivos que começam com f sucedidos por qualquer coisa ENTRE A até I
 ls /etc/f[a-i]*
+    ← Os colchetes determinam uma faixa de caracteres
 
-Faixa do A ao C, ou E
+5. Com o traço nós definimos um intervalo, com a vírgula separamos o grupo
 ls /etc/f[a-c,e]*
 
-# Tem que ser exatamente am ou ul, é um padrão!
+6. Se quisermos, podemos inibir o traço que obtemos o mesmo resultado
+ls /etc/f[ac,e]*
+
+7. Buscando por padrões
 ls /etc/?{am,ul}*
+    ← As chaves buscam essas sequências (esses padrões)
 
-Observação: Traço é intervalo, vírgula é conjunto/padrão.
-
-# Ao tentar fazer a mesma coisa com os colchetes, ele vai buscar tudo do A ao M 
-(- opcional)
-ls /etc/?[am,ul]*
-
-# Todos os arquivos com tal extensão
+8. Buscando todos os arquivos com extensão X/Y
 ls /etc/*.{conf,db}

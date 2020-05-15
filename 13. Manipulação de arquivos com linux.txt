@@ -1,28 +1,27 @@
-Priori: Qualquer sistema tem uma entrada e uma saída padrão. Por entrada:
-teclado, por saída: tela. No linux, da para alterarmos a saída padrão e
-enviar pra um arquivo, por exemplo.
+Priori: Qualquer sistema tem uma entrada e uma saída padrão. Ex: A entrada é
+seu teclado e a saída sua tela. No linux, da para alterarmos a saída padrão
+e enviar pra um arquivo, por exemplo.
 
-# Definição de todas as portas de rede que o sistema usa
-cat /etc/services
+1. "Pesquisando google no google", o cat pega o conteúdo do arquivo e exibe
+cat /bin/cat
 
-# Pagina seu arquivo: seta up/down, page up/down, home/end, /termo_a_buscar (n)
-less /etc/services
+2. Exibe um ecrã por vez do arquivo
+more /bin/cat
 
-# Cat ao contrário: exibe o arquivo da última à primeira linha
-tac
+3. Como o more porém mais recente e com mais funcionalidades
+less /bin/cat
 
-# Copia arquivos, informando da onde vêm, pra onde vai
-cp *.txt ~/Downloads
+4. Copiando e colando um arquivo
+cp <arquivo> <novo_diretório>
 
-# Make directory, aceita vários argumentos
-mkdir Python Bash
+5. Movendo arquivo
+mv <arquivo> <novo_diretório>
 
-# Usando regex no bash
-cp /etc/*.conf temporario/
+6. Criando várias pastas em um só comando
+mkdir <pasta_1> <pasta_2> <pasta_3>
 
-# Apelidando comandos
-alias rm='/bin/rm -I'
-alias sudo='please'
+7. Apelidando um comando
+alias rm='/bin/rm -I'  # Cheque apelidos com alias
 
-# Removendo tudo que está alocado na pasta Temp
-rm Temp/*
+CURIOSITY
+O serviço de impressão open-source do linux é o CUPS, desenvolvido pela APPLE.

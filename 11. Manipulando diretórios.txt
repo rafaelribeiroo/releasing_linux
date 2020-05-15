@@ -1,16 +1,25 @@
-Priori: Bash é o interpretador mais comum, mas nada o impede de alternar.
+Priori: Neste arquivo você descobrirá como manipular seus arquivos e diretórios
+utilizando o terminal.
 
-cd  # change directory
-ls Linux/  # Não precisa apenas visualizar em seu diretório atual
-ls -a  # Arquivos ocultos
-mkdir -p Cursos/Hardware/Módulo\ 1/  # Criar pastas recursivamente
+1. Checar últimos comandos e executá-los com mais rapidez
+history  # e execute com !<numeração_comando>
 
-ls -R  Cursos/  # Listagem recursivamente
-ls -Rla Cursos/  # Exibição mais detalhada
+2. Crie mais de uma pasta em um só comando
+mkdir -p Cursos/Hardware/Módulo\ 1/  # ou --parents
 
-rm -r Cursos/  # Apagar recursivamente/Forçar
-rm -i  # Pra cada arquivo ele te questiona
-rm -I  # Se houver 3+ arquivos, ele te questiona
+→ Por quê a contrabarra acima?
+Porque se tirasse ela o bash entenderia que era pra criar a pasta 1 também,
+então usamos a contrabarra para que o bash compreenda que ele deve ignorar
+o espaço em branco vindouro.
 
-Dica: alias rm="rm -I"
-    Se quiser tornar o alias definitivo, insira-o em .bashrc e source
+3. Listagem recursiva
+ls -R <diretório>
+
+4. Juntando tudo
+ls -Rhla
+
+5. Apagando com confirmação
+rm -i <arquivo>
+
+6. Apagando com confirmação (4+ arquivos)
+rm -I

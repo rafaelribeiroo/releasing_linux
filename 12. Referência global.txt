@@ -22,9 +22,16 @@ ls /etc/f[a-c,e]*
 6. Se quisermos, podemos inibir o traço que obtemos o mesmo resultado
 ls /etc/f[ac,e]*
 
-7. Buscando por padrões
+OBS: Lembrando que a faixa de caracteres é sensível ao contexto, maiúscula e
+minúscula importam.
+
+7. Negando uma faixa de caracteres
+ls /etc/f[^a-c,e]*
+    ← O circunflexo nega a expressão a seguir
+
+8. Buscando por padrões
 ls /etc/?{am,ul}*
     ← As chaves buscam essas sequências (esses padrões)
 
-8. Buscando todos os arquivos com extensão X/Y
+9. Buscando todos os arquivos com extensão X/Y
 ls /etc/*.{conf,db}

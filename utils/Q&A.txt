@@ -58,3 +58,6 @@ apenas uma coleção (não executável).
 A SWAP salva o sistema de crashar, já que se estiver com pouca RAM, ele faz uma
 "área de troca" entre programas que estão abertos e não estão sendo utilizados
 e programas que estão em utilização, distribuindo adequadamente.
+
+Diferença entre <caminho absoluto> e <relativo>?
+O absoluto começa da raíz (/), o relativo a partir do diretório ou atalhos (~).

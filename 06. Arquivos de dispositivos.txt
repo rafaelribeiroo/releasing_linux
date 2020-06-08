@@ -20,11 +20,11 @@ rtc: Relógio da máquina.
 stdin: Entrada padrão da máquina (teclado).
 stdout: Saída padrão (tela).
 stderr: Saída de erros.
-tty0/tty1/tty2/...: Por padrão, ele tem 64 terminais.
+tty0/tty1/...: Emulador de terminal.
 
 Podem ser dispositivos de blocos ou de caracteres.
 
 CURIOSITY
-Em um diretório nomeado: "pts" (dentro do dev), podemos visualizar os arquivos
-que remetem aos pseudo-terminais (já que tem um interpretador de comandos
-rodando embaixo dos panos) abertos atualmente na sessão (limite é 256).
+→ Em uma explicação mais detalhada do tty, ele é um pseudo-terminal com um
+interpretador (geralmente o bash) rodando por baixo dos panos, o limite é
+de 64.

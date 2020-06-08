@@ -1,5 +1,5 @@
-A princípio, veremos alguns comandos primordiais para se navegar e manipular
-conteúdo no pseudo-terminal.
+Priori: Caminho (ou path) é a sequência de diretórios que devem ser abertos até
+você chegar ao arquivo.
 
 1. Exibe apenas nome dos diretórios/arquivos.
 ls
@@ -35,11 +35,6 @@ mkdir Linux
 11. Cria arquivo
 touch arquivo.txt
 
-12. Acessando diretórios
-cd ~   # fique em casa!
-cd ..  # retroceda
-cd -   # retrocede ao último diretório em que esteve
-
 CURIOSITY
 → Todo comando têm a possibilidade de aceitar parâmetros.
-→ Sempre utilize nome de comandos em minúsculo.
+→ Sempre utilize nomes de comandos em minúsculo.

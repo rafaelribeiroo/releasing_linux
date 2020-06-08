@@ -1,0 +1,48 @@
+No ls -l, podemos ver na primeira coluna vários caracteres: "w, x, r"
+
+No sistema, temos 3 tipos de permissões, sendo elas
+r permissao de leitura: permissão de ls, listagem
+w permissao de gravação: alterar o conteúdo ou apagá-lo
+x permissao de execução: permite que voce execute o arquivo
+
+exemplo:
+d rwx r-x r-x
+
+No primeiro conjunto, temos as informações que diz respeito ao dono (proprietario)
+no segundo, as permissoes do grupo proprietario
+no terceiro, as permissoes dos outros
+
+Lembrando que o root tem permissão total sobre qualquer arquivo/diretório
+
+Comando para alterar permissões no linux
+chmod
+    < Tem duas formas para trabalhar com permissões com ele
+
+chmod u+x # ligar permissão de execução para USUARIO
+chmod g+w # ligar permissão de gravação para o GRUPO
+chmod o-r # desligar permissão de leitura para OUTROS
+
+chmod ugo+w -R Música/  # propaga permissões para sub-pastas e todos arquivos recursivamente
+
+Existe também a segunda forma, a octal (usa 8 algarismos, do 0 ao 7).
+    < 0: nenhuma permissão
+    < 1: permissão de execução
+    < 2: permissão de gravação
+    < 3 (1+2): permissão de gravação e execução
+    < 4: permissão de leitura
+    < 5 (4+1): permissão de leitura e execução
+    < 6 (4+2): permissão de leitura e gravação
+    < 7 (4+2+1): permissão de leitura/gravação/execução
+
+chmod 755 Música/
+    < 1o dígito para USUARIO
+    < 2o dígito para GRUPO
+    < 3o dígito para OUTROS
+
+Evite usar o 777, porque voce vai dar total permissão para todo mundo
+
+E se não usar os 3 grupos no chmod octal?
+chmod 40
+    # Ele só dá leitura pro grupo, vai de tras pra frente
+
+chown usuario:grupo altera o usuario e grupo proprietario

@@ -5,22 +5,43 @@ e enviar pra um arquivo, por exemplo.
 1. "Pesquisando google no google", o cat pega o conteúdo do arquivo e exibe
 cat /bin/cat
 
-2. Exibe um ecrã por vez do arquivo
+2. Outros parâmetros com o cat
+cat -n /bin/cat  # Mostra número de linhas a esquerda
+cat -s /bin/cat  # Remove as linhas em branco e exibe apenas o necessário
+zcat <arquivo>   # Arquivos que tenham sido compactados com gzip são exibidos
+bzcat <arquivo>  # Compactados em bz2
+
+3. Ao inverso
+tac /bin/cat  # Imprime o arquivo do final pro começo
+
+4. Apagando arquivos e pastas
+rm -f <arquivo>       # Força a remoção
+rm -rf -v <diretório> # Detalha o que foi apagado
+rm -i <diretório>     # Pede confirmação para cada item
+rm -I <diretório>     # Pede confirmação pro total de itens
+
+5. Exibe um ecrã por vez do arquivo
 more /bin/cat
 
-3. Como o more porém mais recente e com mais funcionalidades
+6. Como o more porém mais recente e com mais funcionalidades
 less /bin/cat
 
-4. Copiando e colando um arquivo
+7. Copiando e colando um arquivo
 cp <arquivo> <novo_diretório>
 
-5. Movendo arquivo
-mv <arquivo> <novo_diretório>
+8. Usando outros parâmetros para copiar
+cp -r /etc/t* .        # Copia arquivos e pastas com o r
+cp -r -f /etc/t* .     # Sobreescreve sem questionar
+cp -r -f -v /etc/t* .  # Modo verboso, diz o que está fazendo
+cp -r -i /etc/t* .     # Pergunta se deseja sobreescrever cada arquivo
 
-6. Criando várias pastas em um só comando
+9. Movendo arquivo
+mv <arquivo> .  # Ponto para colar no diretório em que está
+
+10. Criando várias pastas em um só comando
 mkdir <pasta_1> <pasta_2> <pasta_3>
 
-7. Apelidando um comando
+11. Apelidando um comando
 alias rm='/bin/rm -I'  # Cheque apelidos com alias
 
 CURIOSITY

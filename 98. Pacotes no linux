@@ -1,0 +1,155 @@
+Pacotes são arquivos compactados que possuem arquivos e bibliotecas para a
+instalação de um programa.
+    < Gentoo usa portage
+    Redhat usa RPM
+    Debian usa DEB
+
+Instalação de um pacote pode ser que venha de um repositório
+estavel
+instavel
+nao-live
+contribuições
+
+dpkg -r <programa>  # remove
+dpkg -P <programa>  # remove as configs tbm, purge
+
+
+
+
+Sistemas de arquivos são regras que determinam como os dados serão organizados
+na mídia
+
+
+lsblk formata a saida do /proc/partitions
+
+formatando um pen drive
+fdisk /dev/<referencia_a_media>
+> m pra ajuda
+> p para partições
+> d pra deletar: partição 1 e dps 2 caso tenha 2 partições
+Agora criar partição única, usando o disco inteiro no caso
+> n para nova partição
+> nro da partição: 1
+> enter vai pro ultimo setor
+> t pra trocar o tipo do sistema de arquivo
+> L para listar todos os sistemas de arquivos
+> 11 para fat 32
+> w grava no pen drive e sai
+
+fdisk -l /dev/<referencia_a_media>  # checa se ta do jeito que queremos
+
+agora para finalizar, mkfs.vfat (pra fat) /dev/<referencia_a_media>
+
+
+# Particionando pendrives
+fdisk /dev/<referencia_a_media>
+> n para criar nova partição
+> partição primaria
+> 1 pra partição 1
+    Escolha espaço da partição +15G
+> n pra nova partição
+> partição extendida
+da enter para pegar o restante do espaço
+w para salvar
+
+mkfs.ext4 /dev/<referencia_a_media>
+ao formatar em ntfs, usa a opção -f pra ir mais rapido
+
+O que são nós índices?
+Não é muito bom mexer nisso, pois eles são os blocos do sistema que guardam
+informações sobre os arquivos que estão na máquina. Por exemplo: uma vez o
+tutor resolveu mexer no nro de nós índices pra poder ganhar espaço em disco,
+chegou uma hora que a media tinha espaço em disco mas nao conseguia transferir
+mais nada porque ele tinha excedido o nro de nós índices.
+
+INFORMAÇÕES SOBRE DISCOS
+df = disk free
+du = disk usage
+
+df -a > todos sistemas de arquivos
+df -h > apresenta dados de uma forma mais facil (GB, TB)
+
+df -t vfat   # Apenas discos fat
+    ntfs
+
+df -i  # Mostra os nós índices
+
+du mostra o espaço utilizado em kbytes
+du -h
+
+reduz a quantidade de informações apresentando o mais importante
+du -h -s
+
+PROCESSOS NO LINUX
+Processo é a instância de um programa que está sendo executado e o ambiente
+em torno dele
+    AMBIENTE: tudo o que compõe o processo
+    < código executável
+    < espaço de endereçamento: a região de memoria que é usada por ele
+    < dados do S.O.: quais sao os outros processos que esse processo criou
+    < Arquivos abertos: quais são os arquivos criados por ele
+    < Permissões: quais arquivos ele tem permissão
+    < Estado da CPU: questoes relacionadas ao registrador do processador
+
+escalonamento: todo o ato de colocar o processo em execução e tirar
+
+Tipos de processo
+    CPU bound: orientados ao processador, porque sao processos que utilizam
+muito o processador. Ex: compactação de arquivo, cálculo.
+    I/O bound: processos que realizam muitas operações de entrada e saídas que
+utilizam pouco processador. Ex: Um sistema de banco de dados usa recursos de
+disco, porque vai gravar, realizar todas as queries, deletar etc.
+
+Comunicação entre processos
+    Sinais: tem 64 sinais possiveis de enviar
+    hierarquia
+
+padrão dos parametros
+    um traço/uma letra: -q UNIX
+    dois traços/uma palavra: --quiet GNU
+    sem traço/uma letra: q BND
+
+ps  # mostra os processos vinculados a esse terminal atual
+ps -f  # traz mais informações sobre os processos, da esquerda pra direita temos: a identificação do usuario, o nro do processo, o nro do processo pai (que criou ele), uma flag, hora que o processo foi criado, qual o pseudo-terminal, o tempo e o executável
+ps -ef # Abrir todos os processos do SO
+ps -e -f --forest  # mostra quais processos estao vinculados a outros
+pstree # mostra os processos em forma de uma árvore
+pgrep bash  # retorna o nro identificação do processo
+top  # alem de mostrar os processos em uma lista atualizada de 3 seg, mostra informaçoes de hardware tbm
+
+Como mandar sinais aos processos
+O unico sinal é para matar o processo, por isso a anedota das comunidades em
+dizer que o linux é maldoso, pois o unico sinal que ele entende é kill.
+
+qual o nro de sinal?
+kill -l  # lista todos os sinais para enviar pro kill matar o processo
+mas vamos focar em apenas 4
+1: HUP, processo suspenso, ele fica parado
+
+kill -1 <id do processo>  # pgrep firefox
+porque ele some se era pra ser suspenso?
+Pq esse processo nao aceita a suspensão, então ele para.
+
+3: Solicitando que o processo seja encerrado normalmente
+kill -3 <id do processo>  # pgrep firefox
+
+9: Se o processo estiver parado, use esse (tipo ctrl+alt+del).
+kill -9 <id do processo>  # pgrep firefox
+
+Não precisamos enviar necessariamente o id do processo, pode ser pelo nome
+killall -QUIT bash
+Se ele não aceitar o pedido de encerrar normalmente, podemos forçar
+killall -KILL bash
+
+Para executarmos um processo no terminal, podemos
+firefox-esr
+Nisso o terminal vai travar, então damos ctrl + c para interromper
+e damos um bg pro processo ficar ativo mas atuando em background
+bg %2 pra ja iniciar em segundo plano
+
+jobs  # lista os processos rodando em segundo plano
+# Para levar processos de primeiro a segundo plano, podemos usar o
+fg %2
+
+para ja levar direto pra segundo plano
+<programa> &

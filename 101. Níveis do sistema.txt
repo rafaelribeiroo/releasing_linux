@@ -1,0 +1,193 @@
+man runlevel: é uma forma de voce inicializar e parar grupos de serviços usados na inicialização do sistema.
+Você só pode estar com 1 deles ativo e basicamente são 5 niveis
+    0: desligar o sistema
+    1: mono-usuário, uma forma de você recuperar o sistema
+    2,3,4: multi-usuário, quando voce pressiona ctrl+alt+f1...f2...f3
+    5: interface gráfica
+    6: reiniciar
+
+reboot: muda o sistema pro nivel 6 de init
+halt (desliga): muda o sistema pro nivel 0 de init
+
+shutdown -h +10
+    daqui 10min vai desligar
+shutdown -c
+    cancela o desligamento
+shutdown -h now  # desliga agr
+showdown -r  # reinicia
+
+
+Ligações/links/atalhos
+    O atalho é um arquivo que é um ponteiro que aponta pra outro arquivo
+
+temos 2 tipos:
+    < ligação forte (hard link): o mesmo arquivo pode ter varios nomes, para
+remover o arquivo precisara apagar todas as ligações (pouco usado).
+    < ligação simbólica (symbolic link): apenas um arquivo especial que contem
+o caminho para chegar ao outro arquivo.
+
+O comando é o ln
+ln -s (--symbolic) /etc/motd motd
+
+
+BUSCANDO CONTEUDO
+grep: localizar palavras e expressoes dentro de arquivos texto
+
+grep mrt /etc/services
+grep -l tcp /etc/*  # apenas o nome do arquivo em que o search term é satisfeito
+grep -r tcp /etc/*  # ele abre as pastas e procura por search terms, recursivo
+grep -i tcp /etc/*  # ele ignora maiuscula/minuscula, é "insensitivo"
+grep -n -i tcp /etc/*  # mostra qual linha tem o search term
+grep -A 1 tcp /etc/sysctl.conf  # mostra a linha inferior ante o search term
+grep -B 1 tcp /etc/sysctl.conf  # mostra a linha superior ante o search term
+grep -n -i -A 1 -B 1 tcp /etc/sysctl.conf --color=auto  # Grifa de vermelho o search term
+grep -s -n -r -l -i -A 1 -B 1 tcp /etc/*  # suprime mensagens de erro (acesso negado, nao foi possivel abrir diretorio etc)
+
+fgrep: é o grep com parametro -F
+    < f de fast
+
+egrep: com -E, pra expressoes regulares
+egrep -s --color=auto "tcp|udp" /etc/*
+
+egrep -s --color=auto "tcp&udp" /etc/*
+
+o & comercial simboliza o  conectivo logico e, enquanto | ou
+quando buscou & busca por tcp e udp no mesmo arquivo
+
+BUSCANDO ARQUIVO
+locate fstab  # localiza qualquer arquivos que tem fstab no nome
+locate -S # apresenta estatisticas sobre o banco de dados
+
+# se voce tinha um arquivo e deletou, ele nao vai desaparecer no locate ate voce atualizar o bd
+
+updatedb  # atualiza base de dados
+
+whereis ls  # ele mostra o caminho do executavel de tal comando e a pagina de manual
+
+apropos ~mover~ *move*  # mostra comandos para fazer determinada coisa
+    < qual aquele comando pra mover arquivos mesmo? Esqueci
+
+
+BUSCANDO AVANÇADO
+no find precisamos adicionar informação pra poder fazer a busca
+
+find /etc/  # busca todos arquivos que tem la
+
+find /etc/ -name "*.conf"  # busca por todos os nomes terminados em .conf
+find /etc/ -name "*.conf" -type f  # ignora todas as pastas, mostrando apenas arquivos
+find /etc/ -name "*.conf" -type f -size -50k  # arquivos menores que 50k
+find /etc/ -maxdepth 2 -name "*.conf" -type d -size -2k  # importante maxdepth ficar no inicio, maximo de adentramento de níveis em 2 (ou seja: /pasta1/pasta2)
+find /etc/ -maxdepth 1 -name "*.conf" -type d -size -2k  # ex: /pasta1/
+find /etc/ -maxdepth 1 -name "*.conf" -type d -size -2k -atime -30  # tempo de acesso: arquivos que foram acessados nos ultimos 30min
+
+<comando_acima> -exec cp {} /tmp/ \;
+    < quero que os resultados dessa busca sejam copiados ao tmp}
+    < finalize sempre com \;
+
+find /etc/ -name "*~" -delete
+    < opção nova do find, pois mundos faziam isso mesmo, deletavam arquivos temporarios
+
+ARQUIVOS COMPACTADOS
+tar: agrupa arquivos
+
+apt install zip unzip rar unrar p7zip
+    gzip é muito comum, rapido pra compactar e descompactar
+    bzip2 é mais lento
+    tar a gente usa pra agrupar
+
+tar cfv arquivar.tar *.conf
+    < Criar arquivo agrupado
+    < Forçar
+    < Ele diz o que ta fazendo
+
+gzip arquivao.tar
+    < Compactar eles
+
+cp arquivao.tar.gz arquivao2.tar.gz
+
+gunzip arquivao2.tar.gz
+    < vamos compactar agora com bzip2
+
+bzip2 arquivao2.tar
+    < Comprime ainda mais que o gzip
+
+Agora, da pra usar o tar pra agrupar e compactar?
+
+tar cfvz arquivao1.tar.gz *.conf
+    < z pra trabalhar com gz, como o gzip
+
+tar cfvj arquivao1.tar.gz *.conf
+    < z pra trabalhar com bz2, como o bzip2
+
+tar xfvz arquivao.tar.gz
+    < enquanto o c era pra criar
+    < o x é pra descompactar
+
+Mesma coisa pro bz2
+
+tar xfvj arquivao1.tar.gz -C <pasta_1>/
+    < Descompacta dentro da pasta
+
+existe uma versão do bzip2 que trabalha em paralelo
+Digamos que seu processor tenha 4 nucles de processamento, enquanto o bzip2 usa apenas 1 nucleo, o pbzip2 usa os 4
+
+CRIANDO CONTAS
+useradd # criar usuario
+userdel # deletar usuario
+usermod # alterar configurações de usuario
+
+useradd alguem
+
+useradd -D
+    < ele informa quais caracteristicas seu usuario vai herdar
+
+useradd -c "Gabriel Pereira" -d /home/gabrielpereiraa -g 100 -m -N -s /bin/bash -u 1001 alguem
+    < -c nome por extenso
+    < -d onde sera a pasta padrao dele
+    < -g adicionando-o a um grupo primario
+    < -m ja cria as pastas de usuario (songs/video)
+    < -N remove a utilidade de sempre que um usuario é criado algumas distros criam um grupo com o mesmo nome
+    < -s qual sera o interpretador de comandos padrao
+    < -u define um id pro nome do usuario
+    < nome do usuario
+
+getent passwd
+    < Mostra todos os usuarios
+
+passwd alguem
+    < definindo a senha pro novo usuario
+
+testando
+su - alguem  # entra como sendo outro usuario, o - é quando eu logar eu venho pra pasta do proprio usuario
+
+MANIPULANDO CONTAS
+usermod
+
+Mesma coisa pro useradd
+
+usermod -d /home/ninguem -m -l ninguem alguem
+    < o login vai ser mudado de alguem pra ninguem
+    < tem a opção -L pra lockar o usuario também
+
+userdel -f -r ninguem
+    < -r apaga também a pasta pessoal do novo usuario
+Mas se la houver arquivo que seja de outro usuario ele nao apaga
+    < sendo necessario o -f pra forçar
+
+
+
+como faz para obter ajuda?
+
+as paginas de manual (manpage), todos os comandos tem
+agora o man pega as paginas, formata e entrega pro paginador less
+
+
+man cp
+
+ao rolar, voce vai ver opções posix
+comite posix que determina as regras qe determinam para que um sistema seja padrão linux
+
+man bash
+
+
+neofetch mostra detalhes do hardware

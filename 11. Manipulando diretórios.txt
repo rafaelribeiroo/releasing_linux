@@ -1,10 +1,15 @@
 Priori: Neste arquivo você descobrirá como manipular seus arquivos e diretórios
 utilizando o terminal.
 
-1. Checar últimos comandos e executá-los com mais rapidez
+1. Acessando diretórios
+cd ~   # fique em casa!
+cd ..  # retroceda
+cd -   # retrocede ao último diretório em que esteve
+
+2. Checar últimos comandos e executá-los com mais rapidez
 history  # e execute com !<numeração_comando>
 
-2. Crie mais de uma pasta em um só comando
+3. Crie mais de uma pasta em um só comando
 mkdir -p Cursos/Hardware/Módulo\ 1/  # ou --parents
 
 → Por quê a contrabarra acima?
@@ -12,14 +17,18 @@ Porque se tirasse ela o bash entenderia que era pra criar a pasta 1 também,
 então usamos a contrabarra para que o bash compreenda que ele deve ignorar
 o espaço em branco vindouro.
 
-3. Listagem recursiva
+4. Apagando uma pasta
+rmdir Cursos/         # só funciona em diretórios vazios
+rm -rf <diretório>    # funciona em todos diretórios
+
+5. Listagem recursiva
 ls -R <diretório>
 
-4. Juntando tudo
+6. Juntando tudo
 ls -Rhla
 
-5. Apagando com confirmação
+7. Apagando com confirmação
 rm -i <arquivo>
 
-6. Apagando com confirmação (4+ arquivos)
+8. Apagando com confirmação (4+ arquivos)
 rm -I

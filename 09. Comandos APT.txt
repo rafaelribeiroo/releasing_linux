@@ -80,9 +80,8 @@ sources: Basicamente, faz o mesmo que o edit-sources.
 
 unhold: "Descongela".
 
-update: Atualiza a lista de pacotes sources.list (necessário após um
-add-repository).
+update: Atualiza a lista de pacotes disponíveis.
 
-upgrade: Realiza a atualização de todos os pacotes instalados.
+upgrade: Pega a lista atualizada acima e instala/atualiza pacotes.
 
 version: Exibe a versão do programa instalada (similar ao <pacote> -V).

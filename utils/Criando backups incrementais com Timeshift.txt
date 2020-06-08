@@ -1,0 +1,46 @@
+TIME SHIFT: Backups incrementais. Salva snapshots do sistema.
+
+Abre o programa e clique em: "Configurações"
+
+Tipo: Selecionar o tipo de backup a ser feito.
+    RSYNC: Diferente do betterfs, não é sistema de arquivo, mas um sistema de
+    clonagem.
+    BTRFS: Sistema de arquivos bem legal, como o ZFS (especialmente pela
+    propriedade de snapshots do sistema). Porém, funciona se seu SO for
+    betterfs também, o que não é (já que instalamos pelo EXT4).
+
+Localização: Precisa dizer onde quer que seu bkp seja salvo, não suporta NTFS e
+FAT (windows file system).
+
+Agendamento: Agenda período de backup.
+
+Usuários
+    Excluir Aplicativos: Exclui programas
+    Incluir itens ocultos: Inclui diretórios com prefixo: "."
+    Excluir Aplicativos: É um erro de tradução, deveria ser: "Incluir todas as
+    coisas"
+
+Filtros: Nessa seção você pode optar por "ignorar" um diretório ou arquivo,
+semelhante ao .gitignore, bem como adicionar itens a serem armazenados.
+    EX:
+    - ~/.steam/
+    - ~/.local/share/Trash/
+    + ~/
+    - ~/RESOLVE/
+    - ~/TEMP/
+    - ~/Insync/
+    - ~/Downloads/
+    - ~/EDITAR/
+    - /root/
+
+Misc: Pode definir o formato da data, pra salvar no formato correto.
+
+OK > Criar.
+
+RECUPERANDO
+
+Clica no backup e selecione: "Restaurar". Próximo.
+
+Ele vai comparar agora com os diretórios/arquivos já existentes.
+
+Próximo. Próximo.

@@ -1,27 +1,36 @@
-ntfs nao funciona no mac
+Priori: Esse arquivo desmistifica a falácia: "Se eu botar pen drive no windows
+só funcionará no windows e no linux só no linux".
 
-fat32 compativel com todos os so
-nao é possivel manipular arquivos maiores 4gb
+Alguns dos tipos de sistema de arquivos mais conhecidos são:
 
-exfat
-compativel quase em todos os lugares
-pode lidar com arquivos maiores 4gb
+NTFS  → Antigamente funcionava apenas no Windows (e apenas leitura no linux),
+porque a Microsoft havia patenteado até que o pessoal do linux por meio de
+engenharia reversa conseguiram habilitar a gravação em sistemas NTFS.
 
-ntfs
-compativel com windows
-nao é compativel com o mac e maioria dos dispositivos de hardware
-problemas ocasionais de compatibilidade com o linux (o ntfs é patenteado e com engenharia reversa)
+FAT32 → Chega a quase ser universal, porém só pode enviar arquivos de até
+4GB.
 
-ext4
-moderno, estavel, rapido, jornalizado
-suporta permissoes de arquivos do linux
-nao eh compativel com windows, mac e maioria dos dispositivos de hardware
+EXT4  → Mais adequado aos usuário do linux, é moderno, estável, rápido e
+jornalizado.
 
-ao copiar graficamente um arquivo pra outro diretorio no NEMO, se só arrastar
-ele copia, se segurar o shift, ele move.
+EXFAT → Compatível em quase todos os lugares, pode lidar com arquivos maiores
+de 4GB.
 
-quando manda ejetar o pen drive, ele para sincroniza os dados, salva tudo e aí vai liberar
-quando a janela de progresso acaba, ele ainda não acabou de copiar.
+"A vida é muito curta pra ejetar o dispositivo com segurança?"
+No LINUX NÃO! Nunca parta do pressuposto: "a barra de progresso finalizou, quer
+dizer que os dados já foram transferidos", pois a letra: S do acrônimo: "USB"
+quer dizer (comunicação) serial (assíncrona) – dessa forma, sempre que concluir
+uma transferência: ele vai parar, sincronizar os dados, salvar tudo e aí
+liberar, por isso usar sempre o remover com segurança.
 
+CURIOSITY
+→ Ao arrastar um arquivo/diretório pra outro diretório no NEMO, se só arrastar
+ele copia; se segurar o shift, ele move.
+
+→ Os nomes dos dispositivos são bem fáceis de memorizar. Por exemplo, o sda1.
+    ← /dev/ → É o diretório da montagem da unidade;
+    ← sd → É a referência ao driver controlador do dispositivo;
+    ← a → Letra que identifica o disco (d/e/f);
+    ← 1 → Número da partição (partição 1 no disco a/partição 2 no disco a/...).
 
 

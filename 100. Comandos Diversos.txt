@@ -1,0 +1,79 @@
+clear: limpa a tela
+date: data e hora do sistema
+date +%d/%m/%y  : formata pra dd/mm/yyyy
+
+alterando a data e hora
+su -
+# Lembrando que hora é formato 24
+date mmddhhmm  # 12250815
+
+free: revela espaço livre em disco
+free -b: espaço livre em kB
+free -m: espaço livre em mB
+free -g: espaço livre em gB
+free -h: espaço livre variante, melhor para "humanos" lerem
+
+
+cat: Exibe o conteudo todo do arquivo
+more: Não deixa o texto correr todo na tela, ele para quando enche a tela
+    < Enter vai exibindo linha a linha abaixo
+    < Espaço pula ao próximo ecrã
+Porém o more tem algumas limitações, com sorte existe outro paginador...
+less: como o more só que com mais opções
+    < pode usar as setinhas do teclado para subir/descer
+    < pode usar o home/end
+    < pode usar o page up/down
+
+Para pesquisar algo
+tecle a barra (/) e busque pelo termo
+    < n pra proxima ocorrencia
+    < N maiusculo pra ocorrencia anterior
+
+head: retorna as 10 primeiras linhas do arquivo
+    < head -n1  # somente a primeira linha
+
+tail: retorna as 10 ultimas linhas do arquivo
+    < tail -n1  # somente a ultima linha
+    < tail -f  # quando o arquivo esta sendo atualizado em tempo-real o -f vai mostrando sempre as ultimas linhas
+
+sort: ordena em ordem crescente
+    < e ordem numerica?
+    < sort -n
+
+wc: contagem de palavras
+    < wc -l primeira quantidade: quantas linhas;
+    < wc -w segunda quantidade: quantas palavras;
+    < wc -c terceira quantidade: quantos bytes (ou caracteres).
+
+
+time: é usado para saber quanto tempo um comando demora para executar
+time ls
+    < tempo real (pro comando todo ser executado)
+    < tempo pro usuário
+    < tempo pro sistema
+
+touch  # cria arquivo
+touch -t mmddhhmm  # 12250815 # cria arquivo com tempo de criação
+# Lembrando que hora é formato 24
+
+uptime  # quanto tempo que a máquina está ligada
+    < up: duração total da maquina ligada
+    < <numeração> user
+    < load average (0,14, 0,11, 0,04): carga média do sistema
+        < a 1a carga: instantanea
+        < a 2a carga: 1m atras
+        < a 3a carga: 5min atras
+    Se teu processador é 1 nucleo, se chegar a 1 voce ta com 100%
+
+dmesg: mensagens de inicialização da máquina
+    < Rodar com usuario comum da erro, então: su -
+
+sudo: executa comando com permissões de admin.
+su: alterna usuario para admin.
+
+sync: gravar os dados do cache de disco na memoria RAM
+    < Preciso acelerar o andamento de transferencia pro meu pen drive, entao quando acaba a transferencia
+    damos o sync e após o umount para desmontar e poder remover com sucesso.
+
+uname: nome do sistema
+uname -a: nome do sistema/nome da maquina/versao do kernel/qual linux estamos usando/quando esse kernel foi compilado/qual a arquitetura/qual o sistema

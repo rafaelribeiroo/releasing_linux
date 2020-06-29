@@ -1,0 +1,31 @@
+Como visto no arquivo: "4. Características...", o linux têm uma estrutura bem
+peculiar. Se dá por meio de uma norma (2004) que determina onde devem ser
+alocados os conteúdos e em quais diretórios.
+    ← A maioria das distros a seguem.
+
+/bin: Comandos binários que são essenciais para todos os usuários
+/boot: Arquivos usados para inicialização (núcleo/grub/kernel)
+/dev: Dispositivos, tudo no linux é arquivo, nesse ponto você encontrará
+arquivos relacionados a dispositivos da máquina
+/etc: Arquivos de configuração do computador como um todo: serviços da máquina,
+usuários criados
+/home: Diretórios dos usuários da máquina
+/lib: Bibliotecas do sistema
+/lib64: Bibliotecas específicas que usam arquitetura x64
+/media: Ponto de montagem para mídia removível (pendrive, CD, SD)
+/mnt: Ponto de montagem genérico pelo sistema, em desuso
+/opt: Programas que não são padrão na instalação do linux
+/proc: Sistema de arquivos virtual que possui informações sobre todos os
+sistemas
+/root: Diretório home onde estão os arquivos do superuser
+/run: Alguns usam para algumas aplicações que estão rodando simultaneamente na
+máquina
+/sbin: Arquivos binários exclusivos do root: comandos para criar usuário/
+remover/alterar data e hora padrão do sistema
+/srv: Um diretório que algumas distros colocam, não é padrão
+/sys: Tentativa de organizar o proc, ser mais legível
+/tmp: Arquivos temporários, de tempos em tempos eles são excluídos. Nunca
+armazene seus projetos lá e desligar sem dar commit.
+/usr: Estrutura própria para instalação dos programas.
+/var: Arquivos variáveis, armazena logs – arquivo onde as informações vão sendo
+gravadas.

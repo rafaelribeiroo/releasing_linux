@@ -1,0 +1,37 @@
+Priori: Os caracteres de referência global é um recurso para especificar um ou
+mais arquivo e/ou diretório (s) do sistema de uma só vez.
+
+1. Listamos todos os arquivos que tem como semelhança a extensão .conf
+ls /etc/*.conf
+    ← O asterisco casa com tudo
+
+2. Casa com qualquer coisa que tem refo no meio
+ls /etc/*refo*
+
+3. Começa obrigatoriamente com um caractere, sucedido por: "as", sucedido por *
+ls /etc/?as*
+    ← A interrogação casa com apenas 1 caractere
+
+4. Arquivos que começam com f sucedidos por qualquer coisa ENTRE A até I
+ls /etc/f[a-i]*
+    ← Os colchetes determinam uma faixa de caracteres
+
+5. Com o traço nós definimos um intervalo, com a vírgula separamos o grupo
+ls /etc/f[a-c,e]*
+
+6. Se quisermos, podemos inibir o traço que obtemos o mesmo resultado
+ls /etc/f[ac,e]*
+
+OBS: Lembrando que a faixa de caracteres é sensível ao contexto, maiúscula e
+minúscula importam.
+
+7. Negando uma faixa de caracteres
+ls /etc/f[^a-c,e]*
+    ← O circunflexo nega a expressão a seguir
+
+8. Buscando por padrões
+ls /etc/?{am,ul}*
+    ← As chaves buscam essas sequências (esses padrões)
+
+9. Buscando todos os arquivos com extensão X/Y
+ls /etc/*.{conf,db}

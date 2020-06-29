@@ -1,0 +1,67 @@
+Tanto MBR quanto GTP definem pro boot loader a estrutura das partições nas suas
+unidades de disco. Por exemplo: quantas partições/onde começam/terminam e se há
+algum SO instalado em algum lugar.
+
+    MBR: Permite que você crie até 4 partições primárias (após isso fica
+inutilizável).
+
+    UEFI/GPT (arquitetura x64): Permite criar partições de até 1ZB, quantas
+você quiser. Além disso, possui SECONDARY GPT HEADER (funciona como um bkp
+do GPT caso ele se corrompa por algum motivo).
+
+WINDOWS
+1: Entre no setup e eleve o pen drive com Windows (HP: f10).
+2: Instalação: Personalizada.
+3: Se não precisar, exclua todas as partições ativas até que o HD/SSD zere.
+4: Com o SSD selecionado, clique em Novo e mantenha os valores.
+5: Com o HD selecionado, clique em Novo e / 2.
+6: Selecione o SSD Primário para alocação do Windows.
+7: Ao completar, reinicie e abaixe a ordem do pen drive (HP: f10).
+8: Com o botão direito em Meu Computador: Gerenciar > Gerenciamento de disco.
+9: RIGHT CLICK: Diminuir volume no SSD e / 2.
+10: No disco referente ao HD: RAW, formate para NTFS e nomeie como Storage.
+11: RIGHT CLICK: Alterar letra de unidade de caminho > Adicionar (D:).
+12: A outra partição do HD e SSD (LINUX) deverão estar como UNALOCATED!
+
+LINUX
+1: Entre no setup e eleve o pen drive com Linux (HP: f10).
+2: Instalação: Avançada.
+3: Selecione o SSD na barra inferior.
+4: No "SDA" – onde quer que esteja o SSD. Selecione o espaço livre e +.
+    ← 4: EFI: Tamanho > 500MB.
+    Dê o OK.
+    ← 4: /: Tamanho > Resto.
+    Dê o OK.
+5: No "SDB" – onde quer que esteja o HD. Selecione o espaço livre e +.
+    ← 5: /home: Tamanho > Resto.
+    Dê o OK.
+6: Selecione o SSD (sda) para instalação.
+
+WINDOWS: Fixando relógio marcando tempo errado
+1: Menu Iniciar: Regedit.
+2: HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation
+3: Botão direito em: "TimeZoneInformation" > Novo: Valor DWORD (32 bits)
+4: Nomeie: "RealTimeIsUniversal"/Setar para 1.
+
+LINUX: Mantendo o /home separado do /
+1: Localize o tipo: "ext4 /home" na instalação avançada.
+2: Com ele selecionado, clique no sinal de menos: "-".
+3: Crie uma nova partição (+) no HD com o /home.
+4: Faça a mesma coisa para o EFI (500 MB efi) e / (ext4 /).
+5: Selecione formatar no /.
+
+LINUX: Delegando RAM ao SWAP.
+1: Cheque o disco primário com: "sudo fdisk -l"
+2: Conceda swap: "dd if=/dev/<disco_primário> of=/swapfile bs=2G count=1"
+    ← 2: dd: Aloca uma parte do seu disco gravando-o em um arquivo;
+    ← 2: if: Vou extrair um espaço em disco de...;
+    ← 2: of: Colocar ele...;
+    ← 2: bs: Tamanho a ser definido;
+    ← 2: count: Vou pegar apenas uma vez o espaço informado no bs;
+3: Ative as modificações com: "swapon /swapfile"
+
+<<< AO ser reiniciado as alterações serão perdidas, a menos que >>>
+4: No arquivo /etc/fstab:
+/swapfile swap swap defaults 0 0
+
+Se quiser formatar o SWAP: "mkswap /swapfile"

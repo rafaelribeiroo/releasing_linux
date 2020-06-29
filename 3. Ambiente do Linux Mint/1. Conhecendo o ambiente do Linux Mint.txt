@@ -1,0 +1,20 @@
+Priori: Sempre mantenha sua pasta pessoal em um disco separado na instalação, a
+fim de não precisar ficar transferindo sempre que for formatar.
+
+Acesse o Gerenciador de Atualizações:
+Snapshots do Sistema: Faz uma imagem do seu sistema e armazena na sua home, se
+fizer cagada ele recupera para você (ponto de restauração).
+    ← Mint usa Timeshift.
+
+Há dois tipos de backup que o linux oferece:
+    ← RSYNC;
+    ← BTRFS: Sistema de arquivos diferente do nosso.
+
+Selecionar Níveis de backups:
+    ← Diário: Manter 3 (ele mantém os últimos 3 backups, sobreescrevendo caso
+    necessário).
+
+Alterando o mirror de atualizações de pacotes (local é melhor):
+    ← Configurações do sistema;
+    ← Fontes de aplicativos;
+    ← Analise qual responde mais rápido e comute.

@@ -30,6 +30,9 @@ LINUX
 4: No "SDA" – onde quer que esteja o SSD. Selecione o espaço livre e +.
     ← 4: EFI: Tamanho > 500MB.
     Dê o OK.
+
+    OBS: A partir do Mint 20.1, não é necessária mais alocar EFI.
+
     ← 4: /: Tamanho > Resto.
     Dê o OK.
 5: No "SDB" – onde quer que esteja o HD. Selecione o espaço livre e +.
@@ -43,6 +46,14 @@ WINDOWS: Fixando relógio marcando tempo errado
 3: Botão direito em: "TimeZoneInformation" > Novo: Valor DWORD (32 bits)
 4: Nomeie: "RealTimeIsUniversal"/Setar para 1.
 
+WINDOWS: Busca no menu iniciar não funciona
+1: Botão direito em Menu Iniciar: Windows Powershell (Admin)
+2: Digite os comandos abaixo:
+    ← PowerShell -ExecutionPolicy Unrestricted
+    ← Get-AppXPackage -AllUsers |Where-Object {$_.InstallLocation -like "*SystemApps*"} | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+    ← $manifest = (Get-AppxPackage Microsoft.WindowsStore).InstallLocation + '\AppxManifest.xml' ; Add-AppxPackage -DisableDevelopmentMode -Register $manifest
+3: Menu Iniciar: Executar... C:\Windows\System32\ctfmon.exe
+
 LINUX: Mantendo o /home separado do /
 1: Localize o tipo: "ext4 /home" na instalação avançada.
 2: Com ele selecionado, clique no sinal de menos: "-".
@@ -50,7 +61,7 @@ LINUX: Mantendo o /home separado do /
 4: Faça a mesma coisa para o EFI (500 MB efi) e / (ext4 /).
 5: Selecione formatar no /.
 
-LINUX: Delegando RAM ao SWAP.
+LINUX: Adicionando SWAP através de arquivo.
 1: Cheque o disco primário com: "sudo fdisk -l"
 2: Conceda swap: "dd if=/dev/<disco_primário> of=/swapfile bs=2G count=1"
     ← 2: dd: Aloca uma parte do seu disco gravando-o em um arquivo;
@@ -58,10 +69,9 @@ LINUX: Delegando RAM ao SWAP.
     ← 2: of: Colocar ele...;
     ← 2: bs: Tamanho a ser definido;
     ← 2: count: Vou pegar apenas uma vez o espaço informado no bs;
-3: Ative as modificações com: "swapon /swapfile"
-
-<<< AO ser reiniciado as alterações serão perdidas, a menos que >>>
-4: No arquivo /etc/fstab:
-/swapfile swap swap defaults 0 0
-
-Se quiser formatar o SWAP: "mkswap /swapfile"
+3: Conceda permissões: "chmod 600 /swapfile"
+4: Aplique: "swapon /swapfile"
+    ← Para aplicar as mudanças permanentemente, crie o arquivo a seguir.
+5: No arquivo /etc/fstab:
+/swapfile   swap      swap    defaults        0   0
+6: Para formatar: "mkswap /swapfile"

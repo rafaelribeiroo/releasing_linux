@@ -61,3 +61,9 @@ e programas que estão em utilização, distribuindo adequadamente.
 
 Diferença entre <caminho absoluto> e <relativo>?
 O absoluto começa da raíz (/), o relativo a partir do diretório ou atalhos (~).
+
+Diferença entre <GUI> e <CLI>?
+GUI: Interface / CLI: Command line
+
+Diferença entre <update-grub> e <update-grub>?
+Absolutamente nenhuma, sudo update-grub2 é um symlink para update-grub.

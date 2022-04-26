@@ -46,3 +46,6 @@ chmod 40
     # Ele só dá leitura pro grupo, vai de tras pra frente
 
 chown usuario:grupo altera o usuario e grupo proprietario
+
+ping:
+-s 1400 aumenta o pacote enviado a tal site (ddos negaçao de serviço)

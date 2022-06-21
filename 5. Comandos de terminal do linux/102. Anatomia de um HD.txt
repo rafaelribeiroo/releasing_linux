@@ -1,0 +1,55 @@
+disco rigido é um dispositivo eletromecanico que é composto de alguns
+conjuntos mecanicos controlados com circuito eletronico, a principal memoria
+secundaria do pc.
+
+divisao logica do disco rigido para IBM-PC são
+
+ms-dos: mais antigo e mais usado, trabalha com particoes primarias de até 4. Podem ser particoes estendidas e unidades logicas. só funciona em HD de ate 2TB
+gpt (mais novo), podemos ter apenas partições primarias e aceita HDs de mais de 2TB
+
+
+mbr: quando instala um SO ele vai gravar informações para carregar o SO instalado, ele estara com boot loader: grub pra linux e NTLDR pro windows
+
+    MBR ou setor de boot do HD
+    ele vai gravar um codigo executavel p carregar o SO instalado (boot loader)
+
+        Se instalar um Windows, ele vai gravar um NTLDR (multiloader)
+        Caso linux, vai gravar o LILO em multiloader ou GRUB
+
+    Com isso é possível instalar mais de um SO instalado.
+
+    Ele guarda a tabela de particoes do disco rigido.
+
+    ele ta mais vinculado a estrutura do MS-dos e tem algumas limitacoes
+
+    ENTAO A INTEL...
+
+UEFI: tem como objetivo substituir a BIOS dos computadores padrao IBM-PC
+    o UEFI permite diagnosticos remotos e reparacao de computadores, mesmo sem outro SO instalado.
+
+    tem varios problemas com a UEFI.
+
+
+GRUB: gerenciador de boot adotado pelo lINUX, ta na v2
+    Uso de dois estagios - um esta no MBR.
+    O outro, no diretorio ;boot
+    Configuracoes devem ser feitas no arquivo ;etc;default;grub
+
+    Para gerar o arquivo de configuracao, use o comando update-grub
+
+
+grub_default=x opção padrao (x) no menu do grub
+grub_timeout=x o tempo que ele aguarda ate o usuario escolher  a partição
+grub_cmdline_linux=""  quiet (menos msgs na inicialização)/splash (uso de um tema para a inicialização)
+
+
+Perdi o grub. e agora:
+Acontece que se instalar o Windows dps do linux, ele regrava o MBR
+
+da p recuperar com ferramentas externas como o SGD, ou manualmente:
+
+    Inicia  a maquin a com um linux em LiveCD
+    Monta-se a particao principal
+        mount ;dev;sda1 ;mnt
+    Regrava o GRUB com o comando grub-install
+        grub-install --recheck --root-directory=;mnt ;dev;sda

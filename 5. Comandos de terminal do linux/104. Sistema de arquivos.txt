@@ -1,0 +1,248 @@
+Um sistema de arquivos é um conjunto de regras que determinam como os dados estarão arranjados na mídia (pratos circulo concentrico do HD, disquete, SSD, pen drive.)
+
+a fragmentacao ocorre quando um arquivo ou parte dele nao ocupa totalmente o espaço reservado. Uma outra parte é gravada em outro espaço livre, o que é um desperdício.
+    a longo prazo, os arquivos sao % em varios pedaçcos - o tempo de acesso aumenta.
+
+recomenda-se usar periodicamente um desfragmentador p reorganizar o disco (ntfs fragmenta, mas pouco)
+
+No linux, os sistemas de arquivos fragmentam o espaço livre, e nao o arquivo. Logo, a fragmentacao é mto baixa (no maximo 10%)
+
+
+perdas e danos no disco rigido:
+
+todo hd pode dar defeito, ainda mais sendo fragmentado, qualquer dado pode ser recuperado, depende da quantia de dinheiro que voce tem.
+Em uma missao espacial da NASA, a capsula queimou na reatmosfera, eles conseguiram recuperar, mas o valor investido foi alto.
+
+
+memoria virtual
+
+espao em disco usado como extensao da memoria principal.
+    é um buffer em disco para salvar dados salvos na memoria do computador.
+
+buffer cache: fechei o gimp e reabri, ele abriu mais rapido por estar em buffer.
+
+a memoria virtual (swap) pode estar em uma particao separada, ou em um arquivo.
+
+
+RAID ================
+
+É Uma solução que combina vários HDs para formar uma única unidade lógica de armazenamento de dados.
+
+objetivos:
+    aumentar a velocidade de acesso
+    aumentar a redundancia
+    aumentar a tolerancia a falhas
+
+RAID 0 (striping - fracionamento)
+    usa minimo 2 discos
+
+    nao ha protecao contra falhas
+    nao ha redundancia
+
+    falha em qualquer um dos discos vai gerar perda de dados em todo o SO
+
+    Foco em desempenho - soma a velocidade de todos os discos.
+
+    DISCO 1         DISCO 2
+    DADO 1          DADO 2
+    DADO 3          DADO 4
+
+RAID 1 (mirroring - espelhamento)
+    exatamente 2 discos
+
+    tipo de RAID mais comum
+
+    uma unidade faz uma cópia da outra
+
+    se um dos discos falharem, nao ha perda de dados
+    foco em protecao de dados
+    a gravacao é mais lenta, mas a leitura e'mais rapida.
+
+    DISCO 1         DISCO 2
+    DADO 1          DADO 1
+    DADO 2          DADO 2
+
+
+Podemos usar a combinacao de ambos com exatamente 4 discos, onde definimos o mesmo RAID pra duplas do quarteto e ao todo será o outro RAID.
+
+
+RAID 5 (comum p servidor)
+    uso de pelo menos 3 hds
+
+    informacoes sobre paridade para os dados sao distribuidas ao longo dos discos, ao inves de serem guardadas num disco dedicado.
+
+    isto aumenta a tolerancia a falhas - se um disco parar de funcionar, nao ha perda de dados.
+
+    DISCO 1         DISCO 2         DISCO 3         DISCO 4
+    DADO 1          DADO 2          DADO 3          INFORMACAO PARIDADE DADO
+    INFO 1          INFO 2          PARIDADE INFO   INFO 3
+    CONHECIMENTO 1  PARIDADE CONH.  CONHECIMENTO 2  CONHECIMENTO 3
+
+Um disco só n armazena todas as paridades de dados.
+
+
+RAID 6
+    uso de pelo menos 4 HDs
+
+    Aumento do nro de bits de paridade para dois
+
+    Aumenta a tolerancia a falhas - se dois discos pararem, nao ha perda de dados.
+
+    DISCO 1         DISCO 2         DISCO 3         DISCO 4                     DISCO 5
+    DADO 1          DADO 2          DADO 3          INFORMACAO PARIDADE DADO    INFORMACAO PARIDADE DADO
+
+
+Criando RAID 0
+
+lsblk  # dispositivos de bloco disponiveis
+
+umount ;dev;sd[b-e]1  # b c d e
+cat ;proc;mdstat  # utilitario p criar raids
+
+apt install mdadm
+
+cat ;proc;mdstat  # mostra info nula
+
+mdadm --verbose --create ;dev;md0 --level=0 --raid-devices=4 ;dev;sdb1 ;dev;sdb2 ;dev;sdb3 ;dev;sdb4  # dispositivo sera chamado de md0
+
+posso colocar dados: Nao! Tem que formatar
+
+lsblk  # todos devem ta apontando pra md0
+
+mkfs.ext4 -j ;dev;md0  # usando o sistema de arquivo do linux ext4, vc pode formatar usando algum sistema de arquivo especifico p flash (pendrive, cartao): f2fs
+
+mount ;dev;md0 ;mount
+
+df -h
+
+Sist. Arq.      Tam.        Usado       Disp.   Uso %   Montado em
+;dev;md0        113G        61M         107G    1%      ;mnt
+
+Porque essa diferença de 113 p 107
+    Pq tem espaco de 8gb reservado p journal, que ẽ um log q o sistema de arquivos faz p facilitar recuperacao de dados.
+
+bora copiar algo p la
+
+sudo cp etc;* ;mnt;
+cd ;mnt
+du -hs *
+
+mdadm --detail --scan  # info sobre o RAID
+
+mdadm --detail --scan  >> ;etc;mdadm;mdadm.conf
+
+
+DESFAZENDO UM RAID
+
+mdadm --stop ;dev;md0
+
+cat ;proc;mdstat
+
+mdadm --zero-superblock ;dev;sb[b-e]1 # ta salvo no superbloco ainda q ele faz parte de uma matriz
+
+cat ;proc;mdstat # msm coisa mas n tem mais o dispositivo md 0 criado abaixo
+
+lsblk
+
+# nisso, os dados dançaram, foram perdidos.
+
+
+Criando RAID 1
+
+insira os pendrives no huble
+
+lsblk
+
+mdadm --create ;dev;md0 --level=1 --raid-devices=2 dev;sdb1 dev;sdc1
+
+mkfs.ext4 -j ;dev;md0
+
+cat ;proc;mdstat
+
+[UU] = isso significa que os 2 devices estao u up
+resync = tá sincronizando um com o outro, de baixo nível, vai fazendo dos bytes, de 1 pro outro. Se falhar um e trocar o pen drive, aí sim ao add um pendrive novo, o SO vai iniciar a sincronização.
+
+mount ;dev;sd0 ;mnt
+
+;lost+found é colocado pelo proprio ext4. Perdeu 2G p journal.
+
+mdadm --detail ;dev;md0 # info sobre como estao, assim como o sync
+
+watch cat ;proc;mdstat  # watch repete o comando a cada 2s
+
+mdadm --detail --scan  >> ;etc;mdadm;mdadm.conf
+
+TESTANDO RAID1
+
+lsblk  # MD0 é o dispositivo para o RAID
+
+mount ;dev;md0 ;mnt
+
+ls -l ;mnt
+
+mdadm --manage ;dev;md0 --failt ;dev;sdc1 -- supor que o sdc1 deu ruim
+
+mdadm --examine ;dev;md0
+
+mdadm --manage ;dev;md0 --remove ;dev;sdc1 -- remova ele
+
+cat ;proc;mdstat  # U_ apenas 1 tá up
+
+mdadm --manage ;dev;md0 --add ;dev;sdc1
+
+cat ;proc;mdstat  # recovery tem que aparecer 0.3%
+
+SIMULANDO DEFEITO
+
+e se remover a mídia enquanto estiver montado:
+
+lsblk ouou cat ;proc;mdstat # a midia nao vai mais estar disponivel
+
+mount ;dev;md0 ;mnt
+
+cat ;proc;mdstat   # U_ um dos devices ta desativado
+
+mdadm --manage ;dev;md0 --add ;dev;sdc1
+
+umount ;mnt  # mesmo desmontando o dispositivo a sincronizacao acontece, é independente
+
+o zfs trabalha com raid interno, o cara marreta um HD e ele volta a funcionar.
+
+E se eu descontar o Hub por completo:
+
+    lsblk  # tem nada
+    cat ;proc;mdstat # apos reconectar, aparece U_
+    mount ;dev;md0 ;mount  # remontando a matriz
+    ls mount  # os arquivos tao la
+
+continua sincronizacao de onde parou
+
+REMOVENDO RAID 1
+
+se tiver montado, tem q desmontar
+
+umount ;mnt
+
+mdadm --stop ;dev;md0
+
+mdadm --zero-superblock ;dev;sdb1 ;dev;sdc1
+
+cat ;proc;mdstat
+
+Criando RAID 5
+
+mdadm --verbose --create ;dev;md0 --level=5 --raid-devices=3 ;dev;sdb1 ;dev;sdb2 ;dev;sdb3
+
+# agora adicionaremos um outro pendrive com o sobressalente
+
+mdadm --manage ;dev;md0 --add ;dev;sde1
+
+mdadm --detail --scan  # o sde1 deve estar como spare
+
+mkfs.ext4 ;dev;md0
+
+mount ;dev;md0 ;mnt
+
+cp ~;Videos;* ;mnt
+
+watch cat ;proc;mdstat

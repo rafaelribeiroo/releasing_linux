@@ -27,16 +27,16 @@ LINUX
 1: Entre no setup e eleve o pen drive com Linux (HP: f10).
 2: Instalação: Avançada.
 3: Selecione o SSD na barra inferior.
-4: No "SDA" – onde quer que esteja o SSD. Selecione o espaço livre e +.
+4: No "SDA" – onde quer que esteja o SSD. Selecione o espaço livre e + (BTRFS).
     ← 4: EFI: Tamanho > 500MB.
     Dê o OK.
 
     OBS: A partir do Mint 20.1, não é necessária mais alocar EFI.
 
-    ← 4: /: Tamanho > Resto.
+    ← 4: / (BTRFS): Tamanho > Resto.
     Dê o OK.
 5: No "SDB" – onde quer que esteja o HD. Selecione o espaço livre e +.
-    ← 5: /home: Tamanho > Resto.
+    ← 5: /home (BTRFS): Tamanho > Resto.
     Dê o OK.
 6: Selecione o SSD (sda) para instalação.
 

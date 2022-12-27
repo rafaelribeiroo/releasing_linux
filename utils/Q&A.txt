@@ -67,3 +67,7 @@ GUI: Interface / CLI: Command line
 
 Diferença entre <update-grub> e <update-grub>?
 Absolutamente nenhuma, sudo update-grub2 é um symlink para update-grub.
+
+Diferença entre <apt-remove> e <apt-purge>?
+O apt-purge remove tanto o pacote quanto os arquivos de configurações
+associados a ele, já o apt-remove apenas o pacote.
